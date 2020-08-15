@@ -42,3 +42,9 @@ hr {
 #copy-button {
     align-content: center !important; 
 }
+
+#password-output {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0rem; 
+    color: rgba(100,100,100,1.0); 
+}
