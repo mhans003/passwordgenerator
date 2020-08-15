@@ -2,6 +2,11 @@
 //function uses random number generators to retrieve items 
 //function outputs password to screen 
 
+//Configure ClipboardJS for copy button.
+$(document).ready(function() {
+    new ClipboardJS(".btn"); 
+}); 
+
 //PAGE ELEMENTS
 const submitButton = document.getElementById("submit-button"); 
 
@@ -13,7 +18,6 @@ submitButton.addEventListener("click", validateInputs);
 //FUNCTIONS
 
 function validateInputs() {
-     
     if(validateLength()) { //Validate length first. 
         //Then validate checkboxes.
         if(validateCheckboxes()) {
@@ -21,13 +25,13 @@ function validateInputs() {
             generatePassword(); 
         } 
     } 
-
 }
 
 function displayWarning(message) {
     //This function generates HTML in the modal that describes the input error. 
     document.getElementById("messageModalLabel").innerHTML = "<span class='text-danger'>" + "Invalid Input" + "</span>";  
     document.getElementById("password-output").innerHTML = message; 
+    document.getElementById("copy-button").style.display = "none"; 
 }
 
 function generatePassword() {
@@ -94,6 +98,7 @@ function generatePassword() {
 
     document.getElementById("messageModalLabel").innerHTML = "Your Secure Password"; 
     document.getElementById("password-output").innerHTML = password; 
+    document.getElementById("copy-button").style.display = "initial"; 
 }
 
 
