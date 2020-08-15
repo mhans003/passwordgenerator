@@ -96,7 +96,7 @@ function generatePassword() {
         password += possibleCharacters[randomIndex]; 
     }
 
-    document.getElementById("messageModalLabel").innerHTML = "Your Secure Password"; 
+    document.getElementById("messageModalLabel").innerHTML = "<span class='text-primary'>" + "Your Secure Password:" + "</span>"; 
     document.getElementById("password-output").innerHTML = password; 
     document.getElementById("copy-button").style.display = "initial"; 
 }
