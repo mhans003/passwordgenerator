@@ -103,7 +103,7 @@ function generatePassword() {
     console.log('-----'); 
 
     //Display contents to the user. 
-    document.getElementById("messageModalLabel").innerHTML = "<span class='text-primary'>" + "Your Secure Password:" + "</span>"; 
+    document.getElementById("messageModalLabel").innerHTML = "<span class='text-primary'>" + "Your Secure Password" + " <i class='fas fa-lock'></i>" + "</span>"; 
     //document.getElementById("password-output").innerHTML = password; 
     password.forEach((character) => {
         document.getElementById("password-output").innerHTML += character; 
