@@ -1,24 +1,26 @@
-//function creates as variables the page items as well as values 
-//function uses random number generators to retrieve items 
-//function outputs password to screen 
-
 //Configure ClipboardJS for copy button.
 $(document).ready(function() {
     new ClipboardJS(".btn"); 
 }); 
 
 //PAGE ELEMENTS
+
 const submitButton = document.getElementById("submit-button"); 
 
 
 //EVENTS
+
 submitButton.addEventListener("click", validateInputs); 
 
 
 //FUNCTIONS
 
 function validateInputs() {
-    if(validateLength()) { //Validate length first. 
+    //Clean the passsword output field.
+    document.getElementById("password-output").innerHTML = ""; 
+    //This function passes the user's input through two validation tests before generating the password. 
+    //Validate length first.
+    if(validateLength()) {  
         //Then validate checkboxes.
         if(validateCheckboxes()) {
             //Finally, generate password. 
@@ -37,21 +39,20 @@ function displayWarning(message) {
 function generatePassword() {
     //This function generates the password and displays it on the screen. 
     
-    //access values
-    //REFACTOR later 
+    //Access user's selections (already validated). 
     const length = Number(Math.floor(document.getElementById("inputLength").value));
     const isUppercase = document.getElementById("selectUppercase").checked; 
     const isLowercase = document.getElementById("selectLowercase").checked; 
     const isNumbers = document.getElementById("selectNumbers").checked; 
     const isSpecialchar = document.getElementById("selectSpecial").checked; 
 
-    //Create array to push all possible characters to, based on selections.
+    //Create array to push all possible characters to, based on selections. Set password to empty string. 
     let possibleCharacters = []; 
-    let password = ""; 
+    //let password = ""; 
+    let password = []; 
+    console.log(possibleCharacters); 
 
-    console.log('Running password function.')
-
-    //Populate all possible characters 
+    //Populate all possible characters based on user's selections, utilizing the String fromCharCode method.  
     if(isUppercase) {
         //If the user selected uppercase letters, populate possible characters array with every uppercase letter.
         for(let i = 65; i <= 90; i++) {
@@ -89,18 +90,26 @@ function generatePassword() {
         }
     }
     
-    //Generate password using available characters
+    //Generate password of user's given length using available characters in the now populated array. 
 
     for(let i = 0; i < length; i++) {
         let randomIndex = Math.floor(Math.random() * possibleCharacters.length); 
-        password += possibleCharacters[randomIndex]; 
+        console.log(randomIndex); 
+        //password += possibleCharacters[randomIndex]; 
+        password.push(possibleCharacters[randomIndex]); 
+        console.log(typeof(possibleCharacters[randomIndex])); 
+        console.log('password: ' + password); 
     }
+    console.log('-----'); 
 
+    //Display contents to the user. 
     document.getElementById("messageModalLabel").innerHTML = "<span class='text-primary'>" + "Your Secure Password:" + "</span>"; 
-    document.getElementById("password-output").innerHTML = password; 
+    //document.getElementById("password-output").innerHTML = password; 
+    password.forEach((character) => {
+        document.getElementById("password-output").innerHTML += character; 
+    }); 
     document.getElementById("copy-button").style.display = "initial"; 
 }
-
 
 //Validation functions for each input type
 
@@ -110,23 +119,27 @@ function validateLength() {
 
     //Check if input is not valid or if it is too short or too long. 
     if(!length || isNaN(length) || length < 8 || length > 128) {
+        //Pass this warning to the user. 
         displayWarning("Enter a whole number password length between 8 and 128."); 
         return false; 
     } else {
-        //If the input passes validation tests, generate password. 
+        //If the input passes validation tests, return to go through next validation. 
         return true; 
     }
 }
 
 function validateCheckboxes() {
+    //Access the user's checked selections for character types, and make sure at least one is selected. 
     const isUppercase = document.getElementById("selectUppercase").checked; 
     const isLowercase = document.getElementById("selectLowercase").checked; 
     const isNumbers = document.getElementById("selectNumbers").checked; 
     const isSpecialchar = document.getElementById("selectSpecial").checked; 
 
+    //Verify that at least one type has a truth value. 
     if(isUppercase || isLowercase || isNumbers || isSpecialchar) {
         return true;
     } else {
+        //Pass this warning to the user. 
         displayWarning("You must select at least one character type."); 
         return false; 
     }
