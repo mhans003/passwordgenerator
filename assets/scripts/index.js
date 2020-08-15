@@ -15,26 +15,23 @@ submitButton.addEventListener("click", validateInputs);
 function validateInputs() {
      
     if(validateLength()) { //Validate length first. 
-        console.log('passed validate length and returned back'); 
         //Then validate checkboxes.
         if(validateCheckboxes()) {
-            console.log('passed validate checkboxes and returned back'); 
+            //Finally, generate password. 
             generatePassword(); 
-        } else {
-            console.log('failed validate checkboxes and returned back'); 
-        }
+        } 
     } 
 
 }
 
 function displayWarning(message) {
-    console.log(message); 
-    //this function generates html in the modal that describes error and highlights fields needing changes
-
+    //This function generates HTML in the modal that describes the input error. 
+    document.getElementById("messageModalLabel").innerHTML = "<span class='text-danger'>" + "Invalid Input" + "</span>";  
+    document.getElementById("password-output").innerHTML = message; 
 }
 
 function generatePassword() {
-    //this function generates password, closes modal, and displays password on the screen
+    //This function generates the password and displays it on the screen. 
     
     //access values
     //REFACTOR later 
@@ -87,19 +84,16 @@ function generatePassword() {
             possibleCharacters.push(String.fromCharCode(i)); 
         }
     }
-
-    console.log(possibleCharacters);
     
     //Generate password using available characters
 
     for(let i = 0; i < length; i++) {
         let randomIndex = Math.floor(Math.random() * possibleCharacters.length); 
-        //console.log(possibleCharacters[randomIndex]); 
         password += possibleCharacters[randomIndex]; 
     }
 
-    console.log(password); 
-    
+    document.getElementById("messageModalLabel").innerHTML = "Your Secure Password"; 
+    document.getElementById("password-output").innerHTML = password; 
 }
 
 
@@ -111,19 +105,15 @@ function validateLength() {
 
     //Check if input is not valid or if it is too short or too long. 
     if(!length || isNaN(length) || length < 8 || length > 128) {
-        displayWarning("Invalid password length. Enter a whole number between 8-128."); 
+        displayWarning("Enter a whole number password length between 8 and 128."); 
         return false; 
     } else {
         //If the input passes validation tests, generate password. 
-        console.log('VALID'); 
         return true; 
-        //generatePassword(); 
     }
 }
 
 function validateCheckboxes() {
-    //Access 
-
     const isUppercase = document.getElementById("selectUppercase").checked; 
     const isLowercase = document.getElementById("selectLowercase").checked; 
     const isNumbers = document.getElementById("selectNumbers").checked; 

@@ -21,76 +21,70 @@
 <body>
     
     <!--Form triggers a modal-->
-    <section>
+    <section id="main-container" class="container">
 
-        <h1>Generate Password</h1>
+        <h1>Password Generator</h1>
         <!--Bootstrap Modal-->
         <!--Modal triggers a form with questions-->
         <!--Form requests options, which are passed into a function-->
-        <div class="container">
-            <div class="container">
-
-            </div>
-
-            <div class="form-group">
-                <button type="button" class="btn btn-secondary btn-block btn-lg" data-toggle="modal" data-target="#messageModal">
-                    Generate Password 
-                </button>
-            </div>
-
-            <!-- Message Modal -->
+        <div id="form-container" class="container">
+            <form>
+                <div class="form-group">
+                    <label for="inputLength">Input Password Length <i>(Between 8-128)</i></label>
+                    <input id="inputLength" type="number" class="form-control" name="inputLength" placeholder="Password Length" min="8" max="128">
+                </div>
+                <div class="form-group">
+                    <label for="inputTypes">Select Character Types to Include</label>
+                    <div id="inputTypes" class="form-check">
+                        <div class="form-group">
+                            <input class="form-check-input" type="checkbox" value="uppercase" id="selectUppercase">
+                            <label class="form-check-label" for="selectUppercase">
+                                Uppercase
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-check-input" type="checkbox" value="lowercase" id="selectLowercase">
+                            <label class="form-check-label" for="selectLowercase">
+                                Lowercase
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-check-input" type="checkbox" value="numbers" id="selectNumbers">
+                            <label class="form-check-label" for="selectNumbers">
+                                Numbers
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-check-input" type="checkbox" value="specialchars" id="selectSpecial">
+                            <label class="form-check-label" for="selectSpecial">
+                                Special Characters
+                            </label>
+                        </div>                      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button id="submit-button" type="button" class="btn btn-secondary btn-block btn-lg" data-toggle="modal" data-target="#messageModal">Submit</button>
+                </div>
+            </form>
+            
+           
+            <!--Modal appears with output after button is pressed.-->
             <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <section class="modal-header">
-                            <h5 class="modal-title" id="messageModalLabel">Select Password Criteria</h5>
+                            <h5 class="modal-title" id="messageModalLabel">Your Secure Password</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </section>
                         <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="inputLength">Input Password Length <i>(Between 8-128)</i></label>
-                                    <input id="inputLength" type="number" class="form-control" name="inputLength" placeholder="Password Length" min="8" max="128">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputTypes">Select Character Types to Include</label>
-                                    <div id="inputTypes" class="form-check">
-                                        <div class="form-group">
-                                            <input class="form-check-input" type="checkbox" value="uppercase" id="selectUppercase">
-                                            <label class="form-check-label" for="selectUppercase">
-                                                Uppercase
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-check-input" type="checkbox" value="lowercase" id="selectLowercase">
-                                            <label class="form-check-label" for="selectLowercase">
-                                                Lowercase
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-check-input" type="checkbox" value="numbers" id="selectNumbers">
-                                            <label class="form-check-label" for="selectNumbers">
-                                                Numbers
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-check-input" type="checkbox" value="specialchars" id="selectSpecial">
-                                            <label class="form-check-label" for="selectSpecial">
-                                                Special Characters
-                                            </label>
-                                        </div>                      
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button id="submit-button" type="button" class="btn btn-secondary btn-block btn-lg">Submit</button>
-                                </div>
-                            </form>
+                            <h6 id="password-output" class="text-break"></h6>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </section>
