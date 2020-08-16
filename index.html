@@ -23,22 +23,21 @@
 </head>
 <body>
     
-    <!--Form triggers a modal-->
     <section id="main-container" class="container">
 
         <h1>Password Generator</h1>
         <hr>
-        <!--Bootstrap Modal-->
-        <!--Modal triggers a form with questions-->
-        <!--Form requests options, which are passed into a function-->
+
+        <!--Main Content-->
         <div id="form-container" class="container mt-5 p-md-4">
+            <!--This form takes user input preferences for password length and character types.-->
             <form>
                 <div class="form-group">
                     <label for="inputLength"><strong>Input Password Length <i>(Between 8-128):</i></strong></label>
                     <input id="inputLength" type="number" class="form-control border-primary" name="inputLength" placeholder="Password Length" min="8" max="128">
                 </div>
                 <div class="form-group">
-                    <label for="inputTypes"><strong>Select Character Types to Include:</strong></label>
+                    <label><strong>Select Character Types to Include:</strong></label>
                     <div id="inputTypes" class="form-check">
                         <div class="container">
                             <div class="row">
@@ -72,12 +71,13 @@
                         </div>                      
                     </div>
                 </div>
+                <!--This button triggers the JS to validate, which results in modal showing error or password.-->
                 <div class="form-group text-center">
                     <button id="submit-button" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#messageModal">Generate <i class="fas fa-cogs"></i></button>
                 </div>
             </form>
            
-            <!--Modal appears with output after button is pressed.-->
+            <!--Modal appears with output (either error message or generated password) after #submit-button is pressed.-->
             <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

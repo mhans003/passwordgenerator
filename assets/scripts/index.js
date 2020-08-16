@@ -40,7 +40,6 @@ function validateInputs() {
             //Pass this warning to the user. 
             displayWarning("You must select at least one character type."); 
         }
-        
     }
 }
 
@@ -97,7 +96,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
     }
     
     //Generate password of user's given length using available characters in the now populated array. 
-
     for(let i = 0; i < length; i++) {
         let randomIndex = Math.floor(Math.random() * possibleCharacters.length); 
         password.push(possibleCharacters[randomIndex]); 
