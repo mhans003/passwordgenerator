@@ -5,13 +5,11 @@ $(document).ready(function() {
 
 //PAGE ELEMENTS
 
-const submitButton = document.getElementById("submit-button"); 
-
+const submitButton = document.getElementById("submit-button");  
 
 //EVENTS
 
 submitButton.addEventListener("click", validateInputs); 
-
 
 //FUNCTIONS
 
@@ -144,3 +142,4 @@ function validateCheckboxes() {
         return false; 
     }
 }
+
