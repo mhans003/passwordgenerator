@@ -188,8 +188,7 @@ function validateContents(password, possibleCharacters, possibleTypes) {
             }
 
             //If we are at the end of the password, and the current type isn't found, save this type in an array to be used to replace.
-            if(thisCharacter === password.length - 1 && alreadyContainsType === false) {
-                console.log(`None of type ${thisType} found`); 
+            if(thisCharacter === password.length - 1 && alreadyContainsType === false) { 
                 typesNotFound.push(thisType); 
             }
         }
