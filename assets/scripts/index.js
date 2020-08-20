@@ -66,7 +66,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isUppercase"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter); 
         }
         possibleTypes.push("isUppercase"); 
@@ -79,7 +78,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isLowercase"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter); 
         }
         possibleTypes.push("isLowercase"); 
@@ -92,7 +90,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isNumbers"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter); 
         }
         possibleTypes.push("isNumbers"); 
@@ -105,7 +102,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isSpecialchar"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter);  
         }
         for(let i = 58; i <= 64; i++) {
@@ -113,7 +109,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isSpecialchar"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter); 
         }
         for(let i = 91; i <= 96; i++) {
@@ -121,7 +116,6 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isSpecialchar"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter);  
         }
         for(let i = 123; i <= 126; i++) {
@@ -129,23 +123,16 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
                 character: String.fromCharCode(i),
                 type: "isSpecialchar"
             }; 
-            //possibleCharacters.push(String.fromCharCode(i)); 
             possibleCharacters.push(thisCharacter); 
         }
         possibleTypes.push("isSpecialchar"); 
     }
-
-    //console.log(possibleCharacters); 
     
     //Generate password of user's given length using available characters in the now populated array. 
     for(let i = 0; i < length; i++) {
         let randomIndex = Math.floor(Math.random() * possibleCharacters.length); 
-        //password.push(possibleCharacters[randomIndex]); 
         password.push(possibleCharacters[randomIndex]); 
     }
-
-    console.log("Password finished first time:"); 
-    console.log(password); 
 
     //Verify that the password contains at least one of the selected character types.
     password = validateContents(password, possibleCharacters, possibleTypes); 
@@ -155,19 +142,13 @@ function generatePassword(length, isUppercase, isLowercase, isNumbers, isSpecial
     password.forEach((character) => {
         document.getElementById("password-output").innerHTML += character.character; 
     }); 
+
     //Display modal button. 
     document.getElementById("copy-button").style.display = "initial"; 
 }
 
 function validateContents(password, possibleCharacters, possibleTypes) {
     //This function makes sure at least one selected character of each type appears.
-    //console.log(possibleTypes); //array containing all possible types that should be in password
-    //console.log(password); //array containing password
-    //console.log(possibleCharacters); //array of all possible characters
-
-    /*Go through each possible type (possibleTypes.forEach) and then verify 
-    that one of those characters exists in the password array. Once one is found, move
-    on to next type. If one isn't found, replace one character with another */
 
     //Create an array to hold the first character of each type (for reference only). 
     let firstCharacterOfType = []; 
@@ -180,8 +161,6 @@ function validateContents(password, possibleCharacters, possibleTypes) {
     
     //Go through all possible types that should be in the password.
     possibleTypes.forEach((thisType) => {
-        
-        console.log(`Now analyzing ${thisType}`); 
 
         //Keep track of whether the password currently contains this current type.
         let alreadyContainsType = false; 
@@ -190,12 +169,9 @@ function validateContents(password, possibleCharacters, possibleTypes) {
         for(let thisCharacter = 0; thisCharacter < password.length; thisCharacter++) {
             //If it is the needed type, determine if it is the first or a subsequent (therefore unnecessary) character of that type.
             if(password[thisCharacter].type === thisType) {
-                //console.log(`${password[thisCharacter].type} equals ${thisType}`);  
-                //console.log(password[thisCharacter].character); 
-
-                //Store the character and its type if it is the first of its type.
-                //Store the character and its type if it is not the first of its type.
-                //When it is found, indicate that the password now contains this type.  
+                /*Store the character and its type if it is the first of its type.
+                Store the character and its type if it is not the first of its type.
+                When it is found, indicate that the password now contains this type.*/  
                 if(alreadyContainsType === false) {
                     firstCharacterOfType.push({
                         character: password[thisCharacter].character,
@@ -220,23 +196,10 @@ function validateContents(password, possibleCharacters, possibleTypes) {
 
     }); 
 
-    console.log("characters that can be replaced:"); 
-    console.log(arrayOfCharatersThatCanBeReplaced); 
-    console.log("first character of each type:"); 
-    console.log(firstCharacterOfType); 
-    console.log("Types Not Found:");
-    console.log(typesNotFound); 
-
-    console.log("Password before replacing:");
-    console.log(password); 
-
     //If there is at least one selected type not present in the password, run a function to replace those characters in the password.
     if(typesNotFound.length > 0) {
         password = replaceCharacters(password, possibleCharacters, typesNotFound, arrayOfCharatersThatCanBeReplaced); 
     }
-
-    console.log("Password after replacing:");
-    console.log(password); 
 
     //Return the password.
     return password; 
@@ -252,9 +215,6 @@ function replaceCharacters(password, possibleCharacters, typesNotFound, arrayOfC
 
     //Go through each type of character not found in the password, if any. 
     typesNotFound.forEach((thisType) => {
-
-        console.log("type being currently replaced:"); 
-        console.log(thisType); 
 
         //Populate a temporary array with just characters of this type. 
         let tempArrayOfPossibleCharacters = []; 
@@ -291,11 +251,6 @@ function replaceCharacters(password, possibleCharacters, typesNotFound, arrayOfC
         //Put these indexes into the arrays of already used indexes, so that they aren't replaced again.
         usedIndexesReplaced.push(randomIndexReplaced); 
         usedIndexesReplacer.push(randomIndexReplacer); 
-
-        console.log("Character to be replaced:"); 
-        console.log(password[arrayOfCharatersThatCanBeReplaced[randomIndexReplaced].position].character); 
-        console.log("Character to be replaced with:"); 
-        console.log(tempArrayOfPossibleCharacters[randomIndexReplacer]); 
 
         //Replace the selected character in the random position of the password with the new character of the needed type.
         password[arrayOfCharatersThatCanBeReplaced[randomIndexReplaced].position].character = tempArrayOfPossibleCharacters[randomIndexReplacer]; 
