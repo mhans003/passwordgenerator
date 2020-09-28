@@ -5,6 +5,7 @@
 [Password Generator](https://mhans003.github.io/passwordgenerator/)
 
 ![Screenshot of Password Generator](./assets/images/passwordgenerator.jpg)
+![Screenshot of Password Generator](./assets/images/passwordgenerator2.jpg)
 
 ### Description 
 
