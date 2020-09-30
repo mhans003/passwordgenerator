@@ -22,3 +22,7 @@ The program ensures that at least one of a user's selected character types will 
 * ClipboardJS allows for generated password to be instantly copied. 
 * Font Awesome icons support a more satisfying layout. 
 
+### License
+
+Licensed under the [MIT License](./LICENSE.txt).
+
