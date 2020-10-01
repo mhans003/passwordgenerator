@@ -1,13 +1,13 @@
 # Password Generator
 
-### Deployed Application 
+## Deployed Application 
 
 [Password Generator](https://mhans003.github.io/passwordgenerator/)
 
 ![Screenshot of Password Generator](./assets/images/passwordgenerator.jpg)
 ![Screenshot of Password Generator](./assets/images/passwordgenerator2.jpg)
 
-### Description 
+## Description 
 
 This program runs an algorithm that outputs a randomly generated password to the user. 
 
@@ -15,14 +15,22 @@ The user is asked for two preferences (password length and character type), and 
 
 The program ensures that at least one of a user's selected character types will appear in the generated password. 
 
-### Features
+## Features
 
 * Responsive to screen sizes across devices. 
 * Incorporates Bootstrap utilities including container, modal, and buttons. 
 * ClipboardJS allows for generated password to be instantly copied. 
 * Font Awesome icons support a more satisfying layout. 
+* JavaScript, HTML, CSS
 
-### License
+## Contact
+
+Michael Hanson
+* michaeledwardhanson@gmail.com
+* [GitHub](https://github.com/mhans003)
+* [LinkedIn](https://www.linkedin.com/in/michaeledwardhanson/)
+
+## License
 
 Licensed under the [MIT License](./LICENSE.txt).
 
