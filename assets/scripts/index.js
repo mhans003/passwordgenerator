@@ -6,10 +6,12 @@ $(document).ready(function() {
 //PAGE ELEMENTS
 
 const submitButton = document.getElementById("submit-button");  
+const copyButton = document.getElementById("copy");
 
 //EVENTS
 
 submitButton.addEventListener("click", validateInputs); 
+copyButton.addEventListener("click", showCopied);
 
 //FUNCTIONS
 
@@ -261,4 +263,12 @@ function replaceCharacters(password, possibleCharacters, typesNotFound, arrayOfC
 
 }
 
+//When the copy button is clicked, change text to show this, then change back after 2 seconds.
+function showCopied() {
+    copyButton.innerText = "Copied!";
 
+    const timer = setInterval(function() {
+        copyButton.innerText = "Copy";
+        clearInterval(timer);
+    }, 2000);
+}
