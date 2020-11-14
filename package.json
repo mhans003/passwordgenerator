@@ -19,5 +19,8 @@
   "homepage": "https://github.com/mhans003/passwordgenerator#readme",
   "devDependencies": {
     "eslint": "^7.13.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
