@@ -5,8 +5,8 @@
 
 [Password Generator](https://password-generator-mh.herokuapp.com/)
 
-![Screenshot of Password Generator](./assets/images/passwordgenerator.jpg)
-![Screenshot of Password Generator](./assets/images/passwordgenerator2.jpg)
+![Screenshot of Password Generator](./public/assets/images/passwordgenerator.jpg)
+![Screenshot of Password Generator](./public/assets/images/passwordgenerator2.jpg)
 
 ## Description 
 
