@@ -8,7 +8,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get("/", (request, response) => {
-    response.sendFile(path.join(__dirname, "./public/index.html"));
+    //response.sendFile(path.join(__dirname, "./public/index.html"));
+    response.sendFile("index.html");
 });
 
 app.listen(PORT, () => {
